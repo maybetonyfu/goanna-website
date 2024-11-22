@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/assets/goanna.svg">
+  <title>Goanna</title>
+  <link rel="stylesheet" href="/assets/mvp.css">
+  <style>
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Goanna: advanced type debugging IDE for Haskell</h1>
+  <img src="/assets/goanna.svg" alt="Goanna" width="200" height="200">
+  <div>
+    <a href="https://goanna-ide.vercel.app"><i>Playground</i></a>
+  </div>
+</header>
+
+<main>
+<h2>Motivation</h2>
+  <p>
+    Many developers favor statically typed languages like TypeScript, Rust, and Haskell for large-scale projects that
+    demand correctness and reliability. However, as programming languages evolve to include advanced features such as
+    structural typing, generics, and type inference, understanding and managing types can become increasingly hard.
+    Writing simple programs often requires crafting intricate "essays of types," and navigating the convoluted types
+    defined by third-party libraries can be even more challenging.
+  </p>
+  <p>
+    Modern editors and IDEs provide some level of type debugging support, including inline type hints and popover type
+    signatures. Unfortunately, these tools fall short when a program is not well-typed, which is unfortunate since our
+    code spends most of its time in the "ill-typed" state.
+  </p>
+  <p>
+    Goanna, an experimental type debugging tool for Haskell, aims to enhance the type debugging experience by offering
+    deeper insights into type errors and suggesting clear paths to resolution.
+  </p>
+
+
+  <h2>Key Features</h2>
+
+
+  <h3>Precise Error Location</h3>
+
+  <p>
+    Goanna pinpoints all code fragments that contribute to type errors — not just a single location, as traditional
+    compilers or standalone type checkers often do.
+  </p>
+
+  <h3>Fix type errors by traversing the multiverse</h3>
+  <p>
+    Goanna explores all potential solutions to fix type errors, leaving no stone unturned. For each suggested fix,
+    the IDE predicts the resulting type assignments for the program, helping us understand the implications of
+    our choices.
+  </p>
+
+  <h3>Type error isolation</h3>
+  <p>
+    If multiple type errors exist, Goanna catches them all, and reports each one separately.
+    It intelligently detects related type errors and consolidates them into a single combined error, reducing the mental
+    overhead for developers.
+  </p>
+
+  <h3>Type Inference for Untyped Expressions</h3>
+  <p>
+    Goanna can infer types for both typable and untypable expressions. For traditionally untyped expressions, it
+    assigns them <i>indeterminate types</i>, whose type assignments depend on the programmer's path of action.
+  </p>
+
+  <h2>Our approach</h2>
+  <p>
+    Goanna employs its own constraint-based type inference engine rather than relying on the Hindley-Milner type system
+    with algorithm W. In Goanna, Haskell source code is transformed into a constraint set, in the form of annotated
+    ISO Prolog predicates. A Prolog engine then solves the generated constraints to determine the satisfiability of the
+    constraint set, in other word, the type correctness of the program.
+    To identify all potential fixes, Goanna explore Minimal Unsatisfiable Subsets (MUS) and Minimal Correction Subsets (MCS)
+    within the constraint set, and perform a series of analyses base on the result. Each MCS corresponds to a possible fix,
+    while MUS is used to perform type error isolation.
+  </p>
+
+</main>
+
+</body>
+</html>
