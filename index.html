@@ -1,87 +1,65 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/assets/goanna.svg">
-  <title>Goanna</title>
-  <link rel="stylesheet" href="/assets/mvp.css">
-  <style>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/assets/goanna.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Goanna Programming Language</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  </style>
-</head>
-<body>
+    <!-- <link rel="stylesheet" href="./styles.css" /> -->
+  </head>
+  </head>
+  <body class="flex justify-center">
+    <main style="width: 800px">
+      <header class="flex gap-10">
+        <img class="w-40" src="./assets/goanna.svg">
+        <div class="flex flex-col justify-center">
+           <h1 class="text-2xl font-bold">Goanna</h1>
+           <p class="text-lg">
+              A statically-typed functional language with human-friendly error messages.
+           </p>
+        </div>
+      </header>
+      <h2 class="text-lg font-bold mt-8">Goanna</h2>
+      <p>Goanna is a pure functional programming language. It takes what makes Haskell great (powerful type system, immutable data structure, concise syntax) and combines them with modern programming lanaguage designs (easy tooling, friendly error messages).</p>
+      </p>
 
-<header>
-  <h1>Goanna: advanced type debugging IDE for Haskell</h1>
-  <img src="/assets/goanna.svg" alt="Goanna" width="200" height="200">
-  <div>
-    <a href="https://goanna-ide.vercel.app"><i>Playground</i></a>
-  </div>
-</header>
+      <h2 class="text-lg font-bold mt-8">Why Goanna</h2>
+      <p><span class="font-bold">Practical</span>. The intention of creating Goanna is to use functional programming in daily programming tasks.
+        It is a lanaguage for web-application, for automation scripts, and it is a language for data-wrangling tasks.
+        Goanna programs should be easy to write and easy to run. No elabrate setup and configuration needed.
+        In your terminal type <span class="bg-gray-700 text-white px-0.5 rounded-sm">goanna run myfile.ga</span> just works.
+      </p>
+      <p><span class="font-bold">Correct</span>. Goanna has inside a powerful constraint solver that runs rigorous type inference.</p>
+      <p><span class="font-bold">Powerful Abstractions</span>. Goanna supports type class style zero-cost abstractions. Instance methods are resolved at compile time so the runtime can be as lean as possible.</p>
 
-<main>
-<h2>Motivation</h2>
-  <p>
-    Many developers favor statically typed languages like TypeScript, Rust, and Haskell for large-scale projects that
-    demand correctness and reliability. However, as programming languages evolve to include advanced features such as
-    structural typing, generics, and type inference, understanding and managing types can become increasingly hard.
-    Writing simple programs often requires crafting intricate "essays of types," and navigating the convoluted types
-    defined by third-party libraries can be even more challenging.
-  </p>
-  <p>
-    Modern editors and IDEs provide some level of type debugging support, including inline type hints and popover type
-    signatures. Unfortunately, these tools fall short when a program is not well-typed, which is unfortunate since our
-    code spends most of its time in the "ill-typed" state.
-  </p>
-  <p>
-    Goanna, an experimental type debugging tool for Haskell, aims to enhance the type debugging experience by offering
-    deeper insights into type errors and suggesting clear paths to resolution.
-  </p>
+      <h2 class="text-lg font-bold mt-8">Playground</h2>
+      <section class="workspace">
 
+        <textarea id="source" class="w-full h-64 bg-gray-100 p-1 font-mono" spellcheck="false">
 
-  <h2>Key Features</h2>
+x :: Int
+x = [2]
+</textarea>
+       <div class="actions">
+         <button type="button" class="border-1 px-2" data-action="check">Check</button>
+         <button type="button" class="border-1 px-2" data-action="run" class="primary">Run</button>
+       </div>
+       <p id="status"></p>
+      </section>
 
+      <div class="text-lg inline-block bg-gray-500 text-white px-2 mt-8">Diagnositics</div>
 
-  <h3>Precise Error Location</h3>
+      <section class="diagnostics-box bg-gray-100 p-1 min-h-10">
+          <div id="diagnostics"></div>
+      </section>
 
-  <p>
-    Goanna pinpoints all code fragments that contribute to type errors — not just a single location, as traditional
-    compilers or standalone type checkers often do.
-  </p>
-
-  <h3>Fix type errors by traversing the multiverse</h3>
-  <p>
-    Goanna explores all potential solutions to fix type errors, leaving no stone unturned. For each suggested fix,
-    the IDE predicts the resulting type assignments for the program, helping us understand the implications of
-    our choices.
-  </p>
-
-  <h3>Type error isolation</h3>
-  <p>
-    If multiple type errors exist, Goanna catches them all, and reports each one separately.
-    It intelligently detects related type errors and consolidates them into a single combined error, reducing the mental
-    overhead for developers.
-  </p>
-
-  <h3>Type Inference for Untyped Expressions</h3>
-  <p>
-    Goanna can infer types for both typable and untypable expressions. For traditionally untyped expressions, it
-    assigns them <i>indeterminate types</i>, whose type assignments depend on the programmer's path of action.
-  </p>
-
-  <h2>Our approach</h2>
-  <p>
-    Goanna employs its own constraint-based type inference engine rather than relying on the Hindley-Milner type system
-    with algorithm W. In Goanna, Haskell source code is transformed into a constraint set, in the form of annotated
-    ISO Prolog predicates. A Prolog engine then solves the generated constraints to determine the satisfiability of the
-    constraint set, in other word, the type correctness of the program.
-    To identify all potential fixes, Goanna explore Minimal Unsatisfiable Subsets (MUS) and Minimal Correction Subsets (MCS)
-    within the constraint set, and perform a series of analyses base on the result. Each MCS corresponds to a possible fix,
-    while MUS is used to perform type error isolation.
-  </p>
-
-</main>
-
-</body>
+      <div class="text-lg inline-block bg-gray-500 text-white px-2 mt-8">Program output</div>
+      <section class="output-box bg-gray-100 p-1 min-h-10">
+          <pre id="output"></pre>
+      </section>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
 </html>
