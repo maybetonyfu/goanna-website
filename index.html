@@ -14,9 +14,9 @@
     <main style="width: 800px">
       <header class="flex gap-10">
         <img class="w-40" src="./assets/goanna.svg">
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center items-start">
            <h1 class="text-2xl font-bold">Goanna</h1>
-           <p class="text-lg">
+           <p class="text-lg my-2">
               A statically-typed functional language with human-friendly error messages.
            </p>
         </div>
@@ -27,20 +27,18 @@
 
       <h2 class="text-lg font-bold mt-8">Why Goanna</h2>
       <p><span class="font-bold">Practical</span>. The intention of creating Goanna is to use functional programming in daily programming tasks.
-        It is a lanaguage for web-application, for automation scripts, and it is a language for data-wrangling tasks.
+        It is a lanaguage for web-application, for automation scripts, and for data-wrangling tasks.
         Goanna programs should be easy to write and easy to run. No elabrate setup and configuration needed.
         In your terminal type <span class="bg-gray-700 text-white px-0.5 rounded-sm">goanna run myfile.ga</span> just works.
       </p>
-      <p><span class="font-bold">Correct</span>. Goanna has inside a powerful constraint solver that runs rigorous type inference.</p>
+      <p><span class="font-bold">Correct</span>. Goanna has inside a powerful constraint solver (ISO Prolog) that runs rigorous type inference.</p>
       <p><span class="font-bold">Powerful Abstractions</span>. Goanna supports type class style zero-cost abstractions. Instance methods are resolved at compile time so the runtime can be as lean as possible.</p>
 
       <h2 class="text-lg font-bold mt-8">Playground</h2>
       <section class="workspace">
 
-        <textarea id="source" class="w-full h-64 bg-gray-100 p-1 font-mono" spellcheck="false">
-
-x :: Int
-x = [2]
+        <textarea id="source" class="w-full h-64 bg-gray-100 p-1 font-mono" spellcheck="false">text = "hello world"
+main = print text
 </textarea>
        <div class="actions">
          <button type="button" class="border-1 px-2" data-action="check">Check</button>
@@ -59,6 +57,8 @@ x = [2]
       <section class="output-box bg-gray-100 p-1 min-h-10">
           <pre id="output"></pre>
       </section>
+
+      
     </main>
     <script type="module" src="./app.js"></script>
   </body>
