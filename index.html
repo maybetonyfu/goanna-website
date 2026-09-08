@@ -37,7 +37,8 @@
       <p><span class="font-bold">Powerful Abstractions</span>. Goanna supports type class style zero-cost abstractions. Instance methods are resolved at compile time so the runtime can be as lean as possible.</p>
 
       <h2 class="text-lg font-bold mt-8">Playground</h2>
-      <section class="workspace">
+
+      <section class="flex justify-between py-1">
         <select id="example-select" class="border-1 px-1">
           <option value="hello world">
             Hello world
@@ -54,26 +55,28 @@
           </option>
 
         </select>
-        <textarea id="source" class="w-full h-68 bg-gray-100 p-1 font-mono" spellcheck="false">
-</textarea>
-       <div class="actions">
-         <button type="button" class="border-1 px-2" data-action="check">Check</button>
-         <button type="button" class="border-1 px-2" data-action="run" class="primary">Run</button>
+       <div class="actions flex gap-2">
+         <button type="button" class="bg-blue-300 rounded-md px-2" data-action="check">Check</button>
+         <button type="button" class="bg-green-300 rounded-md px-2" data-action="run" class="primary">Run</button>
+         <p id="status"></p>
        </div>
-       <p id="status"></p>
-      </section>
+       </section>
 
-      <div class="text-lg inline-block bg-gray-100 px-2 mt-8">Diagnositics</div>
+        <textarea id="source" class="w-full h-68 bg-gray-100 p-1 font-mono" spellcheck="false">
+        </textarea>
 
-      <section class="diagnostics-box bg-gray-100 p-1 min-h-10">
-          <div id="diagnostics"></div>
-      </section>
 
-      <div class="text-lg inline-block bg-gray-100 px-2 mt-8">Output</div>
-      <section class="output-box bg-gray-100 p-1 min-h-10">
-          <pre id="output"></pre>
-      </section>
+      <div class="flex flex-col md:flex-row md:justify-evenly gap-2">
+          <section class=" bg-gray-100 p-2 min-h-10 flex-1">
+              <div class="text-lg  italic text-gray-500 text-right">Diagnositics</div>
+              <div id="diagnostics"></div>
+          </section>
 
+          <section class=" bg-gray-100 p-2 min-h-10 flex-1">
+              <div class="text-lg italic text-gray-500 text-right">Output</div>
+              <pre id="output"></pre>
+          </section>
+      </div>
     </main>
     <script type="module" src="./app.js"></script>
     <script type="module" src="./examples.js"></script>
