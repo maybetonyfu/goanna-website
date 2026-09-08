@@ -165,7 +165,7 @@ function renderInline(span) {
 
 function renderSnippet(block) {
     const figure = document.createElement("figure");
-    figure.className = "snippet m-2";
+    figure.className = "snippet my-2 font-mono";
     if (block.file) {
         const caption = document.createElement("span");
         caption.className = "inline-block bg-gray-300 text-gray-800 px-1 py-0.5";
@@ -181,7 +181,7 @@ function renderSnippet(block) {
         gutter.className = "text-gray-400";
         gutter.textContent = String(sourceLine.lineNumber);
         const code = document.createElement("code");
-        code.className = "font-mono"
+
         for (const span of sourceLine.spans ?? [])
             code.append(renderInline({ type: "code", ...span }));
         row.append(gutter, code);
