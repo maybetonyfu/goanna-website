@@ -168,13 +168,13 @@ function renderSnippet(block) {
     figure.className = "snippet my-2 font-mono";
     if (block.file) {
         const caption = document.createElement("span");
-        caption.className = "inline-block bg-gray-300 text-gray-800 px-1 py-0.5";
+        caption.className = "inline-block bg-zinc-200 text-gray-800 px-1 py-0.5";
         caption.textContent = block.file;
         figure.append(caption);
     }
     for (const sourceLine of block.lines ?? []) {
         const row = document.createElement("div");
-        row.className = "snippet-line grid bg-gray-300 px-1";
+        row.className = "snippet-line grid bg-zinc-200 px-1";
         row.style.gridTemplateColumns = "20px 1fr";
 
         const gutter = document.createElement("span");
