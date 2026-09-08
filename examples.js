@@ -16,6 +16,20 @@ const example2 = `
 f b = if b then 1 else 'c'
 `.trim();
 
+const typeClass = `
+class Square a where
+  square :: a -> a
+
+instance Square Int where
+  square a = a * a
+
+instance Square a => Square [a] where
+  square [] = []
+  square (a:as) = square a : square as
+
+main = print (square [1,2,3,4])
+`.trim()
+
 function setExample(event) {
     let text = "";
     switch (event.target.value) {
@@ -28,6 +42,9 @@ function setExample(event) {
             break;
         case "conditional expression":
             text = example2;
+            break;
+        case "type class":
+            text = typeClass;
             break;
     }
     source.value = text;
