@@ -43,8 +43,7 @@ cd goanna && go build -o goanna
       </p>
       <p><span class="font-bold">Correct</span>. Goanna has a powerful constraint solver (ISO Prolog) that runs rigorous type inference.</p>
       <p><span class="font-bold">Powerful Abstractions</span>. Goanna supports type class style zero-cost abstractions. Instance methods are resolved at compile time so the runtime can be as lean as possible.</p>
-      <h2 class="text-lg font-bold mt-8">Playground <span class="text-base font-normal">(Powered by webassembly)</span></h2>
-
+      <h2 class="text-lg font-bold mt-8">Playground <span class="text-base font-normal">(Powered by WebAssembly)</span></h2>
       <section class="flex justify-between py-1">
         <select id="example-select" class="bg-gray-200 px-1">
           <option value="hello world">
@@ -59,6 +58,9 @@ cd goanna && go build -o goanna
           </option>
           <option value="type class">
             Type class
+          </option>
+          <option value="fib">
+            Fib
           </option>
 
         </select>
@@ -84,8 +86,10 @@ cd goanna && go build -o goanna
               <pre id="output"></pre>
           </section>
       </div>
+
+      <footer class="text-center mt-8">Maintained by Tony Fu</footer>
     </main>
-    <script type="module" src="./app.js?v=1"></script>
+    <script type="module" src="./app.js?v=2"></script>
     <script type="module" src="./examples.js"></script>
   </body>
 </html>
