@@ -19,27 +19,34 @@
         <div class="flex flex-col justify-center items-start">
            <h1 class="text-4xl font-bold">Goanna</h1>
            <p class="text-lg my-2">
-              A statically-typed functional language with human-friendly error messages.
+              A statically-typed functional language with human-friendly error messages
            </p>
         </div>
       </header>
       <h2 class="text-lg font-bold mt-8">The Goanna Language</h2>
-      <p>Goanna is a pure functional programming language. It takes what makes Haskell great (powerful type system, immutable data structure, concise syntax) and combines them with modern programming lanaguage designs (easy tooling, friendly error messages).</p>
+      <p>Goanna is a pure functional programming language. It takes what makes Haskell great (powerful type system, immutable data structure, concise syntax) and combines them with modern programming lanaguage designs (easy tooling, friendly error messages).
       </p>
+
+      <h2 class="text-lg font-bold mt-8">Get Goanna</h2>
+      <pre class="bg-gray-700 text-white p-1 rounded-sm">git clone https://codeberg.org/tonyfu/goanna
+cd goanna && go build -o goanna
+./goanna run myfile.ga
+</pre>
+
+
       <a href="https://codeberg.org/tonyfu/goanna" class="text-blue-500 underline"> Source Code </a>
       <h2 class="text-lg font-bold mt-8">Why Goanna</h2>
       <p><span class="font-bold">Practical</span>. The intention of creating Goanna is to use functional programming in daily programming tasks.
-        It is a lanaguage for web-application, for automation scripts, and for data-wrangling tasks.
+        It is a lanaguage for web-applications, for automation scripts, and for data-wrangling tasks.
         Goanna programs should be easy to write and easy to run. No elabrate setup and configuration needed.
-        In your terminal type <span class="bg-gray-700 text-white px-0.5 rounded-sm">goanna run myfile.ga</span> just works.
+        In your terminal, typing <span class="bg-gray-700 text-white px-1 font-mono rounded-sm">goanna run myfile.ga</span> just works.
       </p>
-      <p><span class="font-bold">Correct</span>. Goanna has inside a powerful constraint solver (ISO Prolog) that runs rigorous type inference.</p>
+      <p><span class="font-bold">Correct</span>. Goanna has a powerful constraint solver (ISO Prolog) that runs rigorous type inference.</p>
       <p><span class="font-bold">Powerful Abstractions</span>. Goanna supports type class style zero-cost abstractions. Instance methods are resolved at compile time so the runtime can be as lean as possible.</p>
-
-      <h2 class="text-lg font-bold mt-8">Playground</h2>
+      <h2 class="text-lg font-bold mt-8">Playground <span class="text-base font-normal">(Powered by webassembly)</span></h2>
 
       <section class="flex justify-between py-1">
-        <select id="example-select" class="border-1 px-1">
+        <select id="example-select" class="bg-gray-200 px-1">
           <option value="hello world">
             Hello world
           </option>
